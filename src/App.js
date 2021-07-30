@@ -3,6 +3,7 @@ import "./App.css";
 import TaskForm from "./components/TaskForm";
 import Control from "./components/Control";
 import TaskList from "./components/TaskList";
+import _ from "lodash"
 
 class App extends React.Component {
   constructor(props) {
@@ -76,13 +77,14 @@ class App extends React.Component {
       };
       tasks.push(task);
     } else {
-      var index = -1;
-      for (var i = 0; i < tasks.length; i++) {
-        let task = tasks[i];
-        if (task.id === params.id) {
-          index = i;
-        }
-      }
+      // var index = -1;
+      // for (var i = 0; i < tasks.length; i++) {
+      //   let task = tasks[i];
+      //   if (task.id === params.id) {
+      //     index = i;
+      //   }
+      // }
+      var index  = _.findIndex(tasks, (task) => task.id === params.id);
       if (index !== -1) {
         tasks[index] = params;
       }
